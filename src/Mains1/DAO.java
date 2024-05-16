@@ -43,15 +43,46 @@ public class DAO {
 			String sql = "SELECT * FROM BCONTENTS ORDER BY BCLIKES DESC FETCH FIRST 1 ROWS ONLY";
 			pstmt = con.prepareStatement(sql);
 			ResultSet resultSet = pstmt.executeQuery();
-			if(resultSet.next()) {
+			if (resultSet.next()) {
 				int plz = resultSet.getInt("BCNO");
-				new Read(plz);
-				
+				Read read = new Read(plz);
+				read.frame.setVisible(true);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+	}
+	
+	public void showFrame2() {
+		f = new Mainscreen();
+		try {
+			String sql = "SELECT * FROM BCONTENTS ORDER BY BCLIKES DESC OFFSET 1 ROW FETCH FIRST 1 ROWS ONLY";
+			pstmt = con.prepareStatement(sql);
+			ResultSet resultSet = pstmt.executeQuery();
+			if (resultSet.next()) {
+				int plz = resultSet.getInt("BCNO");
+				Read read = new Read(plz);
+				read.frame.setVisible(true);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void showFrame3() {
+		f = new Mainscreen();
+		try {
+			String sql = "SELECT * FROM BCONTENTS ORDER BY BCLIKES DESC OFFSET 2 ROW FETCH FIRST 1 ROWS ONLY";
+			pstmt = con.prepareStatement(sql);
+			ResultSet resultSet = pstmt.executeQuery();
+			if (resultSet.next()) {
+				int plz = resultSet.getInt("BCNO");
+				Read read = new Read(plz);
+				read.frame.setVisible(true);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void connDB() {
